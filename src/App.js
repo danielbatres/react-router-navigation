@@ -8,14 +8,12 @@ function App() {
   return (
     <HashRouter>
       <Menu />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<p>Not found</p>} />
       </Routes>
-
       <footer></footer>
     </HashRouter>
   );

@@ -5,14 +5,16 @@ function Menu() {
   return (
     <nav>
       <ul>
-        {routes.map(route => (
-          <li>
-            <NavLink 
+        {routes.map((route) => (
+          <li key={route.to}>
+            <NavLink
               style={({ isActive }) => ({
-                color: isActive ? 'red' : 'blue'
-              })} 
+                color: isActive ? "red" : "blue",
+              })}
               to={route.to}
-            >{route.text}</NavLink>
+            >
+              {route.text}
+            </NavLink>
           </li>
         ))}
       </ul>

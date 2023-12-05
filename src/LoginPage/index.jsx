@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useAuth } from "../auth";
 
 function LoginPage() {
+  const auth = useAuth();
+
   const [username, setUsername] = useState("");
 
   const login = (e) => {
     e.preventDefault();
 
-    console.log(username);
+    auth.login({ username });
   };
 
   return (

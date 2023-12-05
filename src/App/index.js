@@ -4,6 +4,8 @@ import { BlogPage } from "../BlogPage";
 import { ProfilePage } from "../ProfilePage";
 import { Menu } from "../Menu";
 import { BlogPost } from "../BlogPost";
+import { LoginPage } from "../LoginPage";
+import { LogoutPage } from "../LogoutPage";
 
 function App() {
   return (

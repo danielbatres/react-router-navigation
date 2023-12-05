@@ -26,6 +26,8 @@ const routes = [
   { to: "/", text: "Home" },
   { to: "/blog", text: "Blog" },
   { to: "/profile", text: "Profile" },
+  { to: "/login", text: "Login" },
+  { to: "/logout", text: "Logout" },
 ];
 
 export { Menu };

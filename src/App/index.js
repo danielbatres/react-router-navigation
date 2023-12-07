@@ -7,6 +7,7 @@ import { BlogPost } from "../BlogPost";
 import { LoginPage } from "../LoginPage";
 import { LogoutPage } from "../LogoutPage";
 import { AuthProvider, AuthRoute } from "../auth";
+import { PostForm } from "../PostForm";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />}>
             <Route path=":slug" element={<BlogPost />} />
+            <Route path="new-post" element={<PostForm />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route

@@ -11,9 +11,10 @@ function BlogPost() {
 
   const blogPost = blogData.find(post => post.slug === slug);
 
-  const canDelete = auth.user?.isAdmin || blogPost.author === auth.user?.username;
+  const canDelete = auth.user?.role === "administrator" || blogPost.author === auth.user?.username;
 
   const returnToBlog = () => navigate('/blog');
+  const deletePost = postId => {};
 
   if (blogPost) {
     return (
@@ -23,7 +24,7 @@ function BlogPost() {
         <p>{blogPost.author}</p>
         <p>{blogPost.content}</p>
         {canDelete && (
-          <button>Delete blogpost</button>
+          <button onClick={deletePost}>Delete blogpost</button>
         )}
       </>
     );

@@ -4,7 +4,10 @@ import { useAuth } from '../auth';
 import { useBlogData } from '../hooks/useBlogData';
 
 function BlogPost() {
-  const { data: blogData } = useBlogData();
+  const { 
+    data: blogData,
+    removePost
+  } = useBlogData();
 
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -16,7 +19,10 @@ function BlogPost() {
   const canDelete = auth.user?.role === "administrator" || blogPost.author === auth.user?.username;
 
   const returnToBlog = () => navigate('/blog');
-  const deletePost = postId => {};
+  const deletePost = (postId) => {
+    removePost(postId);
+    navigate("/blog");
+  };
 
   if (blogPost) {
     return (
@@ -26,7 +32,7 @@ function BlogPost() {
         <p>{blogPost.author}</p>
         <p>{blogPost.content}</p>
         {canDelete && (
-          <button onClick={deletePost}>Delete blogpost</button>
+          <button onClick={() => deletePost(blogPost.id)}>Delete blogpost</button>
         )}
       </>
     );

@@ -1,32 +1,48 @@
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-const useBlogData = () =>{
+const BlogContext = createContext();
+
+const BlogProvider = ({ children }) => {
   const [data, setData] = useState(blogData);
 
   const addPost = (newPost) => {
     setData([...blogData, newPost]);
   };
 
-  const removePost = (idPost) => {
-    const blogDataUpdate = blogData.filter(post => post.id !== idPost);
-    
+  const removePost = (postId) => {
+    const blogDataUpdate = blogData.filter((post) => post.id !== postId);
+
+    console.log(blogDataUpdate);
+
     setData(blogDataUpdate);
   };
 
   const editPost = (postEdit) => {
-    const index = blogData.indexOf(post => post.id === postEdit.id);
+    const index = blogData.indexOf((post) => post.id === postEdit.id);
     blogData = blogData.splice(index, 1);
 
     setData([...blogData, postEdit]);
   };
 
-  return {
+  const blog = {
     data,
     addPost,
     removePost,
     editPost
   };
-} 
+
+  return (
+    <BlogContext.Provider value={blog}>
+      {children}
+    </BlogContext.Provider>
+  )
+}
+
+const useBlogData = () => {
+  const blog = useContext(BlogContext);
+
+  return blog;
+}
 
 let blogData = [
   {
@@ -52,4 +68,4 @@ let blogData = [
   }
 ];
 
-export { useBlogData };
+export { BlogProvider, useBlogData };

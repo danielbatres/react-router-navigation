@@ -1,9 +1,11 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { blogData } from '../blogdata';
 import { useAuth } from '../auth';
+import { useBlogData } from '../hooks/useBlogData';
 
 function BlogPost() {
+  const { data: blogData } = useBlogData();
+
   const navigate = useNavigate();
   const { slug } = useParams();
 

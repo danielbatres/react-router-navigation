@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { blogData } from "../blogdata";
 import { useAuth } from "../auth";
+import { useBlogData } from "../hooks/useBlogData";
 
 function BlogPage() {
+  const { data: blogData } = useBlogData();
   const auth = useAuth();
 
   const isCreator = auth.user?.role === "creator";
